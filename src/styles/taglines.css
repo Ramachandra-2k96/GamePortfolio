@@ -1,0 +1,31 @@
+/* Tagline Animations */
+.taglines-container {
+  text-align: center;
+  perspective: 1000px;
+}
+
+.tagline {
+  opacity: 0;
+  transform: translateZ(-100px);
+  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.tagline.visible {
+  opacity: 1;
+  transform: translateZ(0);
+}
+
+.tagline.primary {
+  font-size: 1.5rem;
+  color: #ff00ea;
+  text-shadow: 0 0 10px #ff00ea;
+  letter-spacing: 0.2em;
+  margin-bottom: 1rem;
+}
+
+.tagline.secondary {
+  font-size: 1.2rem;
+  color: #9d00ff;
+  text-shadow: 0 0 10px #9d00ff;
+  letter-spacing: 0.15em;
+}

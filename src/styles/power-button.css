@@ -1,0 +1,98 @@
+/* Power Button Styles */
+.power-button {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  transform: scale(0);
+  animation: powerButtonEnter 0.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+.power-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 4px solid #9d00ff;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.power-line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 50%;
+  background: #9d00ff;
+  transform: translate(-50%, -50%);
+  transform-origin: center 15%;
+  transition: all 0.3s;
+}
+
+.power-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60%;
+  height: 60%;
+  border: 4px solid transparent;
+  border-top-color: #9d00ff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotate(-135deg);
+  transition: all 0.3s;
+}
+
+.power-button.active .power-ring {
+  border-color: #ff00ea;
+  box-shadow: 0 0 20px #ff00ea, inset 0 0 20px #ff00ea;
+  animation: powerRingPulse 2s infinite;
+}
+
+.power-button.active .power-line {
+  background: #ff00ea;
+  box-shadow: 0 0 20px #ff00ea;
+  animation: powerLinePulse 2s infinite;
+}
+
+.power-button.active::before {
+  border-top-color: #ff00ea;
+  box-shadow: 0 0 20px #ff00ea;
+  animation: powerSymbolPulse 2s infinite;
+}
+
+@keyframes powerButtonEnter {
+  0% {
+    transform: scale(0) rotate(-180deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes powerRingPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px #ff00ea, inset 0 0 20px #ff00ea;
+  }
+  50% {
+    box-shadow: 0 0 40px #ff00ea, inset 0 0 40px #ff00ea;
+  }
+}
+
+@keyframes powerLinePulse {
+  0%, 100% {
+    box-shadow: 0 0 20px #ff00ea;
+  }
+  50% {
+    box-shadow: 0 0 40px #ff00ea;
+  }
+}
+
+@keyframes powerSymbolPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px #ff00ea;
+  }
+  50% {
+    box-shadow: 0 0 40px #ff00ea;
+  }
+}
