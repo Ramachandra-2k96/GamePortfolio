@@ -10,6 +10,7 @@ import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { Skills } from './components/Skills';
 import { BackgroundAudio } from './components/BackgroundAudio';
+import { MouseTrail } from './components/MouseTrail';
 
 function App() {
   const [showMain, setShowMain] = useState(false);
@@ -57,6 +58,7 @@ function App() {
 
   return (
     <>
+      <MouseTrail />
       <BackgroundAudio isPlaying={isAudioPlaying} />
       
       {/* Story Guide - Moved outside main content flow */}
