@@ -16,8 +16,19 @@ export const MouseTrail: React.FC = () => {
   const points = useRef<Point[]>([]);
   const mousePos = useRef({ x: 0, y: 0 });
   const rafId = useRef<number>();
+  const isMobileDevice = useRef(false);
 
   useEffect(() => {
+    // Check if device is mobile/tablet
+    isMobileDevice.current = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    ) || window.matchMedia("(max-width: 768px)").matches;
+
+    // If mobile device, don't initialize the effect
+    if (isMobileDevice.current) {
+      return;
+    }
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -174,31 +185,24 @@ export const MouseTrail: React.FC = () => {
       addPoint(x, y);
     };
 
-    const handleTouchMove = (e: TouchEvent) => {
-      e.preventDefault();
-      const touch = e.touches[0];
-      const rect = canvas.getBoundingClientRect();
-      const x = touch.clientX - rect.left;
-      const y = touch.clientY - rect.top;
-      mousePos.current = { x, y };
-      addPoint(x, y);
-    };
-
-    // Initialize
+    // Initialize only mouse events, remove touch events
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
     window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('touchmove', handleTouchMove, { passive: false });
     animate();
 
     // Cleanup
     return () => {
       window.removeEventListener('resize', resizeCanvas);
       window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('touchmove', handleTouchMove);
       if (rafId.current) cancelAnimationFrame(rafId.current);
     };
   }, []);
+
+  // Don't render canvas on mobile devices
+  if (isMobileDevice.current) {
+    return null;
+  }
 
   return (
     <canvas
