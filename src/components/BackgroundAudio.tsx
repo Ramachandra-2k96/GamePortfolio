@@ -10,7 +10,7 @@ export const BackgroundAudio: React.FC<BackgroundAudioProps> = ({ isPlaying }) =
 
   useEffect(() => {
     if (audioRef.current) {
-      audioRef.current.volume = 0.3; // 50% volume
+      audioRef.current.volume = 0.17;
       
       if (isPlaying) {
         audioRef.current.play().catch(error => {
