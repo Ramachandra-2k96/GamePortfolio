@@ -5,103 +5,67 @@ import { Code2, Brain, Database, Globe, Server, Terminal } from 'lucide-react';
 const skillCategories = [
   {
     title: "Programming Languages",
-    icon: Globe,
-    skills: [
-      { name: "Python", level: 95 },
-      { name: "Java", level: 85 },
-      { name: "C++", level: 80 },
-      { name: "C#", level: 75 },
-      { name: "JavaScript", level: 90 }
-    ],
-    colorClass: "from-pink-500 to-pink-400"
+    icon: Code2,
+    skills: ["Python", "Java", "C++", "C#", "JavaScript", "TypeScript"],
+    colorClass: "from-emerald-500 to-teal-400"
   },
   {
-    title: "Web Development",
+    title: "Web Development", 
     icon: Globe,
-    skills: [
-      { name: "Django", level: 90 },
-      { name: "Full Stack", level: 85 },
-      { name: "React", level: 85 },
-      { name: "Node.js", level: 80 },
-      { name: "HTML/CSS", level: 90 }
-    ],
-    colorClass: "from-purple-500 to-purple-400"
+    skills: ["Django", "Full Stack", "React", "HTML/CSS", "Next.js"],
+    colorClass: "from-violet-500 to-indigo-400" 
   },
   {
     title: "AI & Machine Learning",
     icon: Brain,
-    skills: [
-      { name: "Machine Learning", level: 90 },
-      { name: "Neural Networks", level: 85 },
-      { name: "TensorFlow/Keras", level: 85 },
-      { name: "RAG", level: 80 },
-      { name: "Computer Vision", level: 85 }
-    ],
-    colorClass: "from-cyan-500 to-cyan-400"
+    skills: ["Machine Learning", "Neural Networks", "TensorFlow/Keras", "RAG", "Computer Vision", "NLP"],
+    colorClass: "from-blue-500 to-cyan-400"
   },
   {
     title: "Mobile & Game Dev",
     icon: Server,
-    skills: [
-      { name: "Flutter", level: 85 },
-      { name: "Android Java", level: 80 },
-      { name: "Pygame", level: 85 },
-      { name: "Unity/C#", level: 75 },
-      { name: "Mobile UI/UX", level: 80 }
-    ],
-    colorClass: "from-pink-500 to-pink-400"
+    skills: ["Flutter", "Android Java", "Pygame","Mobile UI/UX"],
+    colorClass: "from-rose-500 to-pink-400"
   },
   {
     title: "Cloud & DevOps",
     icon: Database,
-    skills: [
-      { name: "Google Cloud", level: 75 },
-      { name: "Azure", level: 70 },
-      { name: "Docker", level: 80 },
-      { name: "Git", level: 90 },
-      { name: "CI/CD", level: 75 }
-    ],
-    colorClass: "from-purple-500 to-purple-400"
+    skills: ["Google Cloud", "Azure", "Docker", "Git", ],
+    colorClass: "from-amber-500 to-yellow-400"
   },
   {
     title: "Cybersecurity",
     icon: Terminal,
-    skills: [
-      { name: "Ethical Hacking", level: 85 },
-      { name: "Malware Analysis", level: 80 },
-      { name: "Network Security", level: 75 },
-      { name: "Penetration Testing", level: 80 },
-      { name: "Security Tools", level: 85 }
-    ],
-    colorClass: "from-cyan-500 to-cyan-400"
+    skills: ["Ethical Hacking", "Network Security", "Penetration Testing", "Security Tools",],
+    colorClass: "from-purple-500 to-fuchsia-400"
   }
 ];
 
 export const Skills = () => {
   return (
-    <section className="relative min-h-screen bg-black flex items-center justify-center p-4 overflow-hidden">
+    <section className="relative min-h-screen bg-gradient-to-b from-black via-gray-900 to-black flex items-center justify-center p-8 overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(236,72,153,0.15)_0%,_rgba(0,0,0,0.9)_70%)]" />
-        <div className="absolute inset-0 bg-grid-pattern opacity-10" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(99,102,241,0.15)_0%,_rgba(0,0,0,0.9)_70%)]" />
+        <div className="absolute inset-0 bg-grid-pattern opacity-5" />
       </div>
 
       {/* Animated particles */}
       <div className="absolute inset-0 pointer-events-none">
-        {[...Array(15)].map((_, i) => (
+        {[...Array(30)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-pink-500 rounded-full"
+            className="absolute w-1.5 h-1.5 bg-indigo-400 rounded-full"
             animate={{
               x: [Math.random() * window.innerWidth, Math.random() * window.innerWidth],
               y: [Math.random() * window.innerHeight, Math.random() * window.innerHeight],
-              scale: [0, 1, 0],
-              opacity: [0, 1, 0],
+              scale: [0, 2, 0],
+              opacity: [0, 0.8, 0],
             }}
             transition={{
-              duration: Math.random() * 3 + 2,
+              duration: Math.random() * 5 + 3,
               repeat: Infinity,
-              ease: "linear"
+              ease: "easeInOut"
             }}
           />
         ))}
@@ -109,39 +73,59 @@ export const Skills = () => {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 mb-4">
+          <h2 className="text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 mb-6">
             Skills & Expertise
           </h2>
           <motion.div 
-            className="h-1 w-20 bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 mx-auto rounded-full"
-            animate={{ width: ["0%", "100%", "0%"] }}
-            transition={{ duration: 3, repeat: Infinity }}
+            className="h-1.5 w-24 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mx-auto rounded-full"
+            animate={{ 
+              width: ["0%", "100%"],
+              opacity: [0.5, 1]
+            }}
+            transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
           />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
           {skillCategories.map((category, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="bg-black/50 backdrop-blur-sm border border-pink-500/20 rounded-lg p-6 
-                hover:border-pink-500/40 transition-all duration-300"
+              transition={{ delay: index * 0.15 }}
+              whileHover={{ scale: 1.03, translateY: -5 }}
+              className="bg-gradient-to-br from-gray-900/90 to-black/90 backdrop-blur-lg 
+                border-2 border-gray-800/50 rounded-xl p-8 shadow-xl
+                hover:border-gray-700/50 transition-all duration-500
+                hover:shadow-2xl hover:shadow-indigo-500/10"
             >
-              <div className="flex items-center gap-3 mb-6">
-                <category.icon className={`text-${category.colorClass} w-6 h-6`} />
-                <h3 className="text-xl font-bold text-white">{category.title}</h3>
+              <div className="flex items-center gap-4 mb-8">
+                <motion.div
+                  animate={{ 
+                    rotate: 360,
+                    scale: [1, 1.2, 1]
+                  }}
+                  transition={{ 
+                    rotate: { duration: 10, repeat: Infinity, ease: "linear" },
+                    scale: { duration: 2, repeat: Infinity }
+                  }}
+                  className={`bg-gradient-to-br ${category.colorClass} p-3 rounded-lg`}
+                >
+                  <category.icon className="w-7 h-7 text-white" />
+                </motion.div>
+                <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
+                  {category.title}
+                </h3>
               </div>
 
-              <div className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
                 {category.skills.map((skill, skillIndex) => (
                   <motion.div
                     key={skillIndex}
@@ -149,20 +133,14 @@ export const Skills = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: (index * 0.1) + (skillIndex * 0.1) }}
+                    whileHover={{ scale: 1.05, translateY: -2 }}
+                    className={`bg-gradient-to-br ${category.colorClass} bg-opacity-10 
+                      rounded-lg p-4 text-sm font-medium text-white text-center
+                      hover:bg-opacity-20 transition-all duration-300 shadow-lg
+                      border border-white/5 hover:border-white/20
+                      backdrop-blur-sm`}
                   >
-                    <div className="flex justify-between mb-1">
-                      <span className="text-gray-300">{skill.name}</span>
-                      <span className="text-pink-400">{skill.level}%</span>
-                    </div>
-                    <div className="h-2 bg-gray-700/30 rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: (index * 0.1) + (skillIndex * 0.1) }}
-                        className={`h-full bg-gradient-to-r ${category.colorClass} rounded-full`}
-                      />
-                    </div>
+                    {skill}
                   </motion.div>
                 ))}
               </div>
@@ -172,4 +150,4 @@ export const Skills = () => {
       </div>
     </section>
   );
-}; 
+};
